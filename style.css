@@ -772,42 +772,29 @@ h4 {
   color: #6E5334;
   margin-bottom: 1.1rem;
   font-weight: 500;
-}
-
-.lock-pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: #D4AF37;
+.live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  background: #34D399;
   border-radius: 50%;
-  box-shadow: 0 0 10px #D4AF37;
-  animation: dotPulse 1.8s infinite ease-in-out;
+  box-shadow: 0 0 10px #34D399, 0 0 18px rgba(52, 211, 153, 0.6);
+  animation: liveBeaconPulse 1.6s infinite ease-in-out;
+  display: inline-block;
 }
 
-@keyframes dotPulse {
-  0%, 100% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.3); opacity: 1; }
+@keyframes liveBeaconPulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.35); opacity: 1; }
 }
 
-/* Simulation / Preview Button for Rithick Sanjay */
-.front-preview-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.4rem;
+.countdown-num-box.tick-pulse {
+  animation: secondPulse 0.35s ease-out;
 }
 
-.preview-zero-btn {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(245, 235, 210, 0.45));
-  border: 1px dashed #D4AF37;
-  border-radius: var(--border-radius-pill);
-  padding: 0.55rem 1.3rem;
-  color: #7A5B27;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+@keyframes secondPulse {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
 }

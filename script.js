@@ -698,50 +698,53 @@
   });
 
   // =========================================================================
-  // 7. SECTION 2: BIRTHDAY CELEBRATION & COUNTDOWN
+  // 7. SECTION 2: BIRTHDAY CELEBRATION & STRICT REAL-TIME COUNTDOWN
   // =========================================================================
+  function getUpcomingNovember5() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    // Target is strictly November 5th at 00:00:00 (12:00:00 AM Midnight)
+    let target = new Date(currentYear, 10, 5, 0, 0, 0);
+
+    // If already past November 5th 23:59:59 of this year, target next year's Nov 5
+    const endOfNov5 = new Date(currentYear, 10, 5, 23, 59, 59, 999);
+    if (now > endOfNov5) {
+      target = new Date(currentYear + 1, 10, 5, 0, 0, 0);
+    }
+    return target;
+  }
+
   function initCountdown() {
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
+    const frontSecondsBox = document.getElementById('front-seconds-box');
     const countdownWrapper = document.getElementById('countdown-wrapper');
     const greetingBadge = document.getElementById('birthday-greeting-badge');
 
-    // Instant unlock support via URL query (?preview=true or ?unlock=true)
+    // Secret developer preview trigger via URL query param (?test=true or ?preview=true)
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('preview') || urlParams.has('unlock') || urlParams.has('now')) {
+    if (urlParams.has('preview') || urlParams.has('test') || urlParams.has('unlock') || urlParams.has('now')) {
       setTimeout(() => {
         triggerZeroCelebration(true);
       }, 500);
       return;
     }
 
+    const targetBirthday = getUpcomingNovember5();
+
     function update() {
       const now = new Date();
-      const currentYear = now.getFullYear();
-      let targetBirthday = new Date(currentYear, 10, 5, 0, 0, 0); // Month is 0-indexed: 10 = November
+      const diff = targetBirthday.getTime() - now.getTime();
 
-      const isToday = now.getMonth() === 10 && now.getDate() === 5;
-      const isPast = now > targetBirthday && !isToday;
-
-      if (isToday || (now.getMonth() === 10 && now.getDate() >= 5)) {
-        // It is on or after November 5: trigger 00:00:00 celebration
-        if (!celebrationTriggered) {
-          triggerZeroCelebration();
-        }
-        if (countdownWrapper) countdownWrapper.classList.add('hidden');
-        if (greetingBadge) greetingBadge.classList.remove('hidden');
-        return;
-      }
-
-      // If past November 5 of current year and past November entirely, point to next year
-      if (isPast) {
-        targetBirthday = new Date(currentYear + 1, 10, 5, 0, 0, 0);
-      }
-
-      const diff = targetBirthday - now;
+      // ONLY when the real time reaches Nov 5 midnight 12:00 AM (00:00:00)
       if (diff <= 0) {
+        if (frontDays) frontDays.textContent = '00';
+        if (frontHours) frontHours.textContent = '00';
+        if (frontMinutes) frontMinutes.textContent = '00';
+        if (frontSeconds) frontSeconds.textContent = '00';
+
         if (!celebrationTriggered) {
           triggerZeroCelebration();
         }
@@ -750,6 +753,7 @@
         return;
       }
 
+      // Real-time ticking down:
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const m = Math.floor((diff / 1000 / 60) % 60);
@@ -764,7 +768,16 @@
       if (frontDays) frontDays.textContent = dStr;
       if (frontHours) frontHours.textContent = hStr;
       if (frontMinutes) frontMinutes.textContent = mStr;
-      if (frontSeconds) frontSeconds.textContent = sStr;
+      if (frontSeconds) {
+        if (frontSeconds.textContent !== sStr) {
+          frontSeconds.textContent = sStr;
+          if (frontSecondsBox) {
+            frontSecondsBox.classList.remove('tick-pulse');
+            void frontSecondsBox.offsetWidth; // Trigger reflow for micro-animation
+            frontSecondsBox.classList.add('tick-pulse');
+          }
+        }
+      }
 
       // Update Inside Countdown Digits
       if (daysEl) daysEl.textContent = dStr;

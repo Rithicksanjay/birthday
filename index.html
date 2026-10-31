@@ -96,11 +96,11 @@
         "Every second that passes brings me closer to celebrating my favorite person in the entire universe."
       </p>
 
-      <!-- Front Page Countdown Timer Card -->
+      <!-- Front Page Countdown Timer Card (Strict Real-Time Locked Gate) -->
       <div id="front-countdown-card" class="front-countdown-card">
         <div class="countdown-card-header">
-          <span class="lock-indicator-icon">🔒</span>
-          <span class="countdown-target-text">COUNTDOWN TO NOVEMBER 5TH, 00:00:00</span>
+          <span class="live-pulse-dot"></span>
+          <span class="countdown-target-text">COUNTDOWN TO NOVEMBER 5TH • 12:00 AM MIDNIGHT</span>
         </div>
 
         <div id="front-countdown-wrapper" class="countdown-grid front-countdown-grid">
@@ -126,7 +126,7 @@
           </div>
           <div class="countdown-sep">:</div>
           <div class="countdown-unit front-countdown-unit">
-            <div class="countdown-num-box">
+            <div id="front-seconds-box" class="countdown-num-box">
               <span id="front-seconds" class="countdown-num">00</span>
             </div>
             <span class="countdown-label">Seconds</span>
@@ -135,17 +135,8 @@
 
         <!-- Timer lock status info -->
         <div class="front-lock-status">
-          <span class="lock-pulse-dot"></span>
-          <span id="lock-status-text">Unlocks automatically when countdown strikes 00:00:00</span>
-        </div>
-
-        <!-- Simulation / Preview Button for Instant 00:00:00 Experience -->
-        <div class="front-preview-actions">
-          <button id="preview-zero-btn" class="preview-zero-btn" aria-label="Trigger 00:00:00 Grand Welcoming preview">
-            <span class="sparkle-icon">✨</span>
-            <span class="preview-btn-text">Preview 00:00:00 Welcoming</span>
-            <span class="sparkle-icon">🎆</span>
-          </button>
+          <span class="lock-indicator-icon">🔒</span>
+          <span id="lock-status-text">Locked • Automatically unlocks & welcomes Princess Sowmiya on Nov 5 at 12:00 AM Midnight</span>
         </div>
       </div>
 
