@@ -22,6 +22,15 @@
   const body = document.body;
   const entranceSection = document.getElementById('entrance');
   const enterBtn = document.getElementById('enter-btn');
+  const previewZeroBtn = document.getElementById('preview-zero-btn');
+  const grandEnterBtn = document.getElementById('grand-enter-btn');
+  const grandWelcomingOverlay = document.getElementById('grand-welcoming-overlay');
+  const autoEnterCounter = document.getElementById('auto-enter-counter');
+  const lockStatusText = document.getElementById('lock-status-text');
+  const frontDays = document.getElementById('front-days');
+  const frontHours = document.getElementById('front-hours');
+  const frontMinutes = document.getElementById('front-minutes');
+  const frontSeconds = document.getElementById('front-seconds');
   const journeyContent = document.getElementById('journey-content');
   const journeyNav = document.getElementById('journey-nav');
   const progressBar = document.getElementById('progress-bar');
@@ -181,7 +190,7 @@
   });
 
   // =========================================================================
-  // 3. EFFECTS CANVAS (Confetti, Fireworks, Floating Hearts)
+  // 3. EFFECTS CANVAS (Confetti, Fireworks/Crackers, Flowers, Floating Hearts)
   // =========================================================================
   const effectsParticles = [];
 
@@ -190,21 +199,66 @@
       this.x = x;
       this.y = y;
       this.type = type;
-      this.vx = (Math.random() - 0.5) * (type === 'firework' ? 12 : 8);
-      this.vy = type === 'heart' ? -(Math.random() * 4 + 2) : (type === 'firework' ? (Math.random() - 0.5) * 12 : -(Math.random() * 8 + 4));
-      this.gravity = type === 'heart' ? -0.05 : 0.22;
-      this.friction = 0.96;
-      this.life = 1;
-      this.decay = Math.random() * 0.015 + 0.01;
-      this.size = type === 'heart' ? Math.random() * 14 + 10 : Math.random() * 8 + 4;
       this.rotation = Math.random() * Math.PI * 2;
       this.rotationSpeed = (Math.random() - 0.5) * 0.2;
-      
-      const palette = ['#D4AF37', '#FFFDF8', '#E8D6A5', '#FAF0D8', '#B89730', '#FFEBB0'];
-      this.color = palette[Math.floor(Math.random() * palette.length)];
+      this.life = 1;
+
+      if (type === 'firework' || type === 'cracker') {
+        // High-energy radial explosion in 360 degrees
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 9 + 2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.gravity = 0.09;
+        this.friction = 0.96;
+        this.decay = Math.random() * 0.018 + 0.012;
+        this.size = Math.random() * 6 + 3;
+        const crackerColors = ['#D4AF37', '#FFFDF8', '#FF2A6D', '#FFD700', '#FF7597', '#FFA07A', '#05D9E8', '#FFE494', '#FF4365', '#FFFFFF'];
+        this.color = crackerColors[Math.floor(Math.random() * crackerColors.length)];
+      } else if (type === 'flower_petal') {
+        // Soft fluttering velvety petals
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = Math.random() * 2 + 1.2;
+        this.gravity = 0.015;
+        this.friction = 0.99;
+        this.decay = 0.0035; // Floats for a long time
+        this.size = Math.random() * 12 + 8;
+        this.swayAngle = Math.random() * Math.PI * 2;
+        this.swaySpeed = Math.random() * 0.04 + 0.02;
+        const petalColors = ['#C41E3A', '#D90429', '#E63946', '#FF4D6D', '#FF758F', '#D4AF37', '#FFF0F5'];
+        this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+      } else if (type === 'heart') {
+        this.vx = (Math.random() - 0.5) * 8;
+        this.vy = -(Math.random() * 4 + 2);
+        this.gravity = -0.05;
+        this.friction = 0.96;
+        this.decay = Math.random() * 0.015 + 0.01;
+        this.size = Math.random() * 14 + 10;
+        const palette = ['#D4AF37', '#FFFDF8', '#E8D6A5', '#FAF0D8', '#FF4D6D'];
+        this.color = palette[Math.floor(Math.random() * palette.length)];
+      } else {
+        // Confetti
+        this.vx = (Math.random() - 0.5) * 8;
+        this.vy = -(Math.random() * 8 + 4);
+        this.gravity = 0.22;
+        this.friction = 0.96;
+        this.decay = Math.random() * 0.015 + 0.01;
+        this.size = Math.random() * 8 + 4;
+        const palette = ['#D4AF37', '#FFFDF8', '#E8D6A5', '#FAF0D8', '#B89730', '#FFEBB0'];
+        this.color = palette[Math.floor(Math.random() * palette.length)];
+      }
     }
 
     update() {
+      if (this.type === 'flower_petal') {
+        this.swayAngle += this.swaySpeed;
+        this.x += Math.sin(this.swayAngle) * 1.8 + this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotationSpeed;
+        this.life -= this.decay;
+        return;
+      }
+
       this.vx *= this.friction;
       this.vy = (this.vy + this.gravity) * (this.type === 'heart' ? 0.99 : this.friction);
       this.x += this.vx;
@@ -220,8 +274,32 @@
       ctx.rotate(this.rotation);
       ctx.globalAlpha = Math.max(0, this.life);
 
-      if (this.type === 'heart') {
-        // Render a cute golden heart
+      if (this.type === 'flower_petal') {
+        // Velvet rose/flower petal curved contour
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = 'rgba(196, 30, 58, 0.4)';
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.moveTo(0, -this.size);
+        ctx.bezierCurveTo(this.size * 0.85, -this.size * 0.5, this.size * 0.85, this.size * 0.6, 0, this.size);
+        ctx.bezierCurveTo(-this.size * 0.85, this.size * 0.6, -this.size * 0.85, -this.size * 0.5, 0, -this.size);
+        ctx.closePath();
+        ctx.fill();
+      } else if (this.type === 'firework' || this.type === 'cracker') {
+        // Glowing festive firecracker spark
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Shimmering cross sparkle
+        if (Math.random() < 0.4) {
+          ctx.fillRect(-this.size * 1.8, -0.6, this.size * 3.6, 1.2);
+          ctx.fillRect(-0.6, -this.size * 1.8, 1.2, this.size * 3.6);
+        }
+      } else if (this.type === 'heart') {
         ctx.fillStyle = this.color;
         ctx.beginPath();
         const topCurveHeight = this.size * 0.3;
@@ -247,6 +325,80 @@
   function spawnBurst(x, y, count = 50, type = 'confetti') {
     for (let i = 0; i < count; i++) {
       effectsParticles.push(new EffectParticle(x, y, type));
+    }
+  }
+
+  // Cracker Audio Synthesizer via Web Audio API (Crack, Pop, Sparkler Crackle)
+  function playCrackerPopSound() {
+    try {
+      if (!audioContext) initWebAudioSynth();
+      if (!audioContext) return;
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      const now = audioContext.currentTime;
+
+      // 1. Bass thud / pop
+      const osc = audioContext.createOscillator();
+      const oscGain = audioContext.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(32, now + 0.16);
+      oscGain.gain.setValueAtTime(0.3, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      osc.connect(oscGain);
+      oscGain.connect(audioContext.destination);
+      osc.start(now);
+      osc.stop(now + 0.2);
+
+      // 2. Sparkler crackle noise
+      const bufferSize = Math.floor(audioContext.sampleRate * 0.22);
+      const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioContext.sampleRate * 0.05));
+      }
+      const noise = audioContext.createBufferSource();
+      noise.buffer = buffer;
+      const filter = audioContext.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(2000, now);
+      filter.Q.setValueAtTime(2.2, now);
+      const noiseGain = audioContext.createGain();
+      noiseGain.gain.setValueAtTime(0.22, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      noise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(audioContext.destination);
+      noise.start(now);
+    } catch (e) {
+      // Audio autoplay gracefully handled
+    }
+  }
+
+  // Continuous Fireworks/Crackers Barrage
+  function spawnFirecrackerBarrage(burstCount = 8) {
+    let count = 0;
+    const interval = setInterval(() => {
+      const rx = Math.random() * (windowWidth * 0.8) + (windowWidth * 0.1);
+      const ry = Math.random() * (windowHeight * 0.5) + (windowHeight * 0.12);
+      spawnBurst(rx, ry, 75, 'firework');
+      playCrackerPopSound();
+      count++;
+      if (count >= burstCount) {
+        clearInterval(interval);
+      }
+    }, 280);
+  }
+
+  // Flower Petals Cascade Shower
+  function spawnFlowerShower(petalCount = 60) {
+    for (let i = 0; i < petalCount; i++) {
+      setTimeout(() => {
+        const rx = Math.random() * windowWidth;
+        const ry = -20 - Math.random() * 120;
+        effectsParticles.push(new EffectParticle(rx, ry, 'flower_petal'));
+      }, i * 35);
     }
   }
 
@@ -363,36 +515,110 @@
   musicToggleBtn.addEventListener('click', toggleMusic);
 
   // =========================================================================
-  // 5. ENTRANCE TRANSITION
+  // 5. 00:00:00 GRAND WELCOMING & ENTRANCE TRANSITION
   // =========================================================================
-  enterBtn.addEventListener('click', () => {
-    // 1. Soft golden light burst
-    const burstOverlay = document.createElement('div');
-    burstOverlay.className = 'light-burst-overlay';
-    document.body.appendChild(burstOverlay);
+  let celebrationTriggered = false;
+  let autoEnterInterval = null;
 
-    // 2. Confetti & golden hearts explosion from button
-    const rect = enterBtn.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    spawnBurst(cx, cy, 60, 'confetti');
-    spawnBurst(cx, cy, 30, 'heart');
+  function triggerZeroCelebration(isManual = false) {
+    if (celebrationTriggered) return;
+    celebrationTriggered = true;
 
-    // 3. Start music automatically on user intent if not already playing
+    // 1. Force digits to 00:00:00
+    if (frontDays) frontDays.textContent = '00';
+    if (frontHours) frontHours.textContent = '00';
+    if (frontMinutes) frontMinutes.textContent = '00';
+    if (frontSeconds) frontSeconds.textContent = '00';
+
+    if (lockStatusText) {
+      lockStatusText.innerHTML = '✨ <strong>UNLOCKED! Celebrating Sowmiya\'s Birthday!</strong> ✨';
+    }
+
+    // 2. Play crackers audio & shoot fireworks barrage across screen
+    spawnFirecrackerBarrage(10);
+
+    // 3. Heavy cascading flower petals drop
+    spawnFlowerShower(85);
+
+    // 4. Start background music automatically on user intent
     if (!state.isPlayingMusic) {
       toggleMusic();
     }
 
-    // 4. Animate entrance away
-    entranceSection.classList.add('fade-out');
+    // 5. Reveal the Grand Welcoming Overlay Modal
+    if (grandWelcomingOverlay) {
+      grandWelcomingOverlay.classList.remove('hidden');
+    }
+
+    // 6. Auto-enter countdown (5 seconds)
+    let secondsLeft = 5;
+    if (autoEnterCounter) {
+      autoEnterCounter.textContent = String(secondsLeft);
+    }
+
+    autoEnterInterval = setInterval(() => {
+      secondsLeft--;
+      if (autoEnterCounter) {
+        autoEnterCounter.textContent = String(secondsLeft);
+      }
+
+      // Keep festive crackers and flower drops going
+      if (secondsLeft > 0) {
+        const rx = Math.random() * (windowWidth * 0.8) + (windowWidth * 0.1);
+        const ry = Math.random() * (windowHeight * 0.45) + (windowHeight * 0.12);
+        spawnBurst(rx, ry, 65, 'firework');
+        playCrackerPopSound();
+        spawnFlowerShower(20);
+      }
+
+      if (secondsLeft <= 0) {
+        clearInterval(autoEnterInterval);
+        enterExperience();
+      }
+    }, 1000);
+  }
+
+  function enterExperience() {
+    if (state.entered) return;
+    state.entered = true;
+
+    if (autoEnterInterval) {
+      clearInterval(autoEnterInterval);
+      autoEnterInterval = null;
+    }
+
+    // Hide Grand Welcoming Overlay
+    if (grandWelcomingOverlay) {
+      grandWelcomingOverlay.classList.add('hidden');
+    }
+
+    // Golden light burst overlay
+    const burstOverlay = document.createElement('div');
+    burstOverlay.className = 'light-burst-overlay';
+    document.body.appendChild(burstOverlay);
+
+    // Final entry firecracker & flower burst
+    spawnFirecrackerBarrage(5);
+    spawnFlowerShower(50);
+
+    // Ensure music is playing
+    if (!state.isPlayingMusic) {
+      toggleMusic();
+    }
+
+    // Animate entrance away
+    if (entranceSection) {
+      entranceSection.classList.add('fade-out');
+    }
 
     setTimeout(() => {
-      entranceSection.style.display = 'none';
+      if (entranceSection) {
+        entranceSection.style.display = 'none';
+      }
       body.classList.remove('no-scroll');
       journeyContent.classList.add('visible');
       journeyNav.classList.remove('hidden');
       burstOverlay.remove();
-      state.entered = true;
 
       // Smoothly scroll to celebration section
       const celebration = document.getElementById('celebration');
@@ -400,7 +626,27 @@
         celebration.scrollIntoView({ behavior: 'smooth' });
       }
     }, 1100);
-  });
+  }
+
+  // Event Listeners for Entrance & Preview
+  if (previewZeroBtn) {
+    previewZeroBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerZeroCelebration(true);
+    });
+  }
+
+  if (grandEnterBtn) {
+    grandEnterBtn.addEventListener('click', () => {
+      enterExperience();
+    });
+  }
+
+  if (enterBtn) {
+    enterBtn.addEventListener('click', () => {
+      enterExperience();
+    });
+  }
 
   // =========================================================================
   // 6. SCROLL PROGRESS & JOURNEY TRACKER
@@ -462,6 +708,15 @@
     const countdownWrapper = document.getElementById('countdown-wrapper');
     const greetingBadge = document.getElementById('birthday-greeting-badge');
 
+    // Instant unlock support via URL query (?preview=true or ?unlock=true)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('preview') || urlParams.has('unlock') || urlParams.has('now')) {
+      setTimeout(() => {
+        triggerZeroCelebration(true);
+      }, 500);
+      return;
+    }
+
     function update() {
       const now = new Date();
       const currentYear = now.getFullYear();
@@ -471,7 +726,10 @@
       const isPast = now > targetBirthday && !isToday;
 
       if (isToday || (now.getMonth() === 10 && now.getDate() >= 5)) {
-        // It is on or after November 5: show celebration status instead of negative countdown
+        // It is on or after November 5: trigger 00:00:00 celebration
+        if (!celebrationTriggered) {
+          triggerZeroCelebration();
+        }
         if (countdownWrapper) countdownWrapper.classList.add('hidden');
         if (greetingBadge) greetingBadge.classList.remove('hidden');
         return;
@@ -484,6 +742,9 @@
 
       const diff = targetBirthday - now;
       if (diff <= 0) {
+        if (!celebrationTriggered) {
+          triggerZeroCelebration();
+        }
         if (countdownWrapper) countdownWrapper.classList.add('hidden');
         if (greetingBadge) greetingBadge.classList.remove('hidden');
         return;
@@ -494,10 +755,22 @@
       const m = Math.floor((diff / 1000 / 60) % 60);
       const s = Math.floor((diff / 1000) % 60);
 
-      if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
-      if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
-      if (minutesEl) minutesEl.textContent = String(m).padStart(2, '0');
-      if (secondsEl) secondsEl.textContent = String(s).padStart(2, '0');
+      const dStr = String(d).padStart(2, '0');
+      const hStr = String(h).padStart(2, '0');
+      const mStr = String(m).padStart(2, '0');
+      const sStr = String(s).padStart(2, '0');
+
+      // Update Front Page Countdown Digits
+      if (frontDays) frontDays.textContent = dStr;
+      if (frontHours) frontHours.textContent = hStr;
+      if (frontMinutes) frontMinutes.textContent = mStr;
+      if (frontSeconds) frontSeconds.textContent = sStr;
+
+      // Update Inside Countdown Digits
+      if (daysEl) daysEl.textContent = dStr;
+      if (hoursEl) hoursEl.textContent = hStr;
+      if (minutesEl) minutesEl.textContent = mStr;
+      if (secondsEl) secondsEl.textContent = sStr;
     }
 
     update();
