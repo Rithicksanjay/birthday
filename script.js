@@ -515,10 +515,9 @@
   musicToggleBtn.addEventListener('click', toggleMusic);
 
   // =========================================================================
-  // 5. 00:00:00 GRAND WELCOMING & ENTRANCE TRANSITION
+  // 5. 00:00:00 GRAND WELCOMING & DIRECT THEMED ENTRANCE
   // =========================================================================
   let celebrationTriggered = false;
-  let autoEnterInterval = null;
 
   function triggerZeroCelebration(isManual = false) {
     if (celebrationTriggered) return;
@@ -534,79 +533,31 @@
       lockStatusText.innerHTML = '✨ <strong>UNLOCKED! Celebrating Sowmiya\'s Birthday!</strong> ✨';
     }
 
-    // 2. Play crackers audio & shoot fireworks barrage across screen
-    spawnFirecrackerBarrage(10);
-
-    // 3. Heavy cascading flower petals drop
-    spawnFlowerShower(85);
-
-    // 4. Start background music automatically on user intent
-    if (!state.isPlayingMusic) {
-      toggleMusic();
-    }
-
-    // 5. Reveal the Grand Welcoming Overlay Modal
-    if (grandWelcomingOverlay) {
-      grandWelcomingOverlay.classList.remove('hidden');
-    }
-
-    // 6. Auto-enter countdown (5 seconds)
-    let secondsLeft = 5;
-    if (autoEnterCounter) {
-      autoEnterCounter.textContent = String(secondsLeft);
-    }
-
-    autoEnterInterval = setInterval(() => {
-      secondsLeft--;
-      if (autoEnterCounter) {
-        autoEnterCounter.textContent = String(secondsLeft);
-      }
-
-      // Keep festive crackers and flower drops going
-      if (secondsLeft > 0) {
-        const rx = Math.random() * (windowWidth * 0.8) + (windowWidth * 0.1);
-        const ry = Math.random() * (windowHeight * 0.45) + (windowHeight * 0.12);
-        spawnBurst(rx, ry, 65, 'firework');
-        playCrackerPopSound();
-        spawnFlowerShower(20);
-      }
-
-      if (secondsLeft <= 0) {
-        clearInterval(autoEnterInterval);
-        enterExperience();
-      }
-    }, 1000);
+    // 2. Directly enter the celebration section with full crackers & flower shower!
+    enterExperience();
   }
 
   function enterExperience() {
     if (state.entered) return;
     state.entered = true;
 
-    if (autoEnterInterval) {
-      clearInterval(autoEnterInterval);
-      autoEnterInterval = null;
-    }
-
-    // Hide Grand Welcoming Overlay
-    if (grandWelcomingOverlay) {
-      grandWelcomingOverlay.classList.add('hidden');
-    }
-
     // Golden light burst overlay
     const burstOverlay = document.createElement('div');
     burstOverlay.className = 'light-burst-overlay';
     document.body.appendChild(burstOverlay);
 
-    // Final entry firecracker & flower burst
-    spawnFirecrackerBarrage(5);
-    spawnFlowerShower(50);
+    // 1. Crackers & Fireworks Barrage firing over the celebration!
+    spawnFirecrackerBarrage(12);
 
-    // Ensure music is playing
+    // 2. Heavy cascade of velvety rose & gold flower petals!
+    spawnFlowerShower(90);
+
+    // 3. Ensure romantic music is playing
     if (!state.isPlayingMusic) {
       toggleMusic();
     }
 
-    // Animate entrance away
+    // 4. Animate entrance gate away smoothly
     if (entranceSection) {
       entranceSection.classList.add('fade-out');
     }
@@ -620,32 +571,18 @@
       journeyNav.classList.remove('hidden');
       burstOverlay.remove();
 
-      // Smoothly scroll to celebration section
+      // Smoothly scroll directly to the celebration section with "HAPPY BIRTHDAY MY LOVE"
       const celebration = document.getElementById('celebration');
       if (celebration) {
         celebration.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 1100);
-  }
 
-  // Event Listeners for Entrance & Preview
-  if (previewZeroBtn) {
-    previewZeroBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      triggerZeroCelebration(true);
-    });
-  }
-
-  if (grandEnterBtn) {
-    grandEnterBtn.addEventListener('click', () => {
-      enterExperience();
-    });
-  }
-
-  if (enterBtn) {
-    enterBtn.addEventListener('click', () => {
-      enterExperience();
-    });
+      // Continue celebratory crackers and flowers as she arrives at the cake!
+      setTimeout(() => {
+        spawnFirecrackerBarrage(8);
+        spawnFlowerShower(60);
+      }, 1500);
+    }, 1000);
   }
 
   // =========================================================================

@@ -84,8 +84,10 @@
         <span class="badge-star">✦</span>
       </div>
 
-      <div class="entrance-crown-icon" aria-hidden="true">
-        <span class="crown-emoji">👑</span>
+      <div class="gold-crown-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14v2H5z" fill="#D4AF37" stroke="#5C4632"/>
+        </svg>
       </div>
 
       <h1 class="entrance-title">
@@ -97,38 +99,30 @@
       </p>
 
       <!-- Front Page Countdown Timer Card (Strict Real-Time Locked Gate) -->
-      <div id="front-countdown-card" class="front-countdown-card">
+      <div id="front-countdown-card" class="celebration-status-card">
         <div class="countdown-card-header">
           <span class="live-pulse-dot"></span>
           <span class="countdown-target-text">COUNTDOWN TO NOVEMBER 5TH • 12:00 AM MIDNIGHT</span>
         </div>
 
-        <div id="front-countdown-wrapper" class="countdown-grid front-countdown-grid">
-          <div class="countdown-unit front-countdown-unit">
-            <div class="countdown-num-box">
-              <span id="front-days" class="countdown-num">00</span>
-            </div>
+        <div id="front-countdown-wrapper" class="countdown-grid">
+          <div class="countdown-unit">
+            <span id="front-days" class="countdown-num">00</span>
             <span class="countdown-label">Days</span>
           </div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit front-countdown-unit">
-            <div class="countdown-num-box">
-              <span id="front-hours" class="countdown-num">00</span>
-            </div>
+          <div class="countdown-unit">
+            <span id="front-hours" class="countdown-num">00</span>
             <span class="countdown-label">Hours</span>
           </div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit front-countdown-unit">
-            <div class="countdown-num-box">
-              <span id="front-minutes" class="countdown-num">00</span>
-            </div>
+          <div class="countdown-unit">
+            <span id="front-minutes" class="countdown-num">00</span>
             <span class="countdown-label">Minutes</span>
           </div>
           <div class="countdown-sep">:</div>
-          <div class="countdown-unit front-countdown-unit">
-            <div id="front-seconds-box" class="countdown-num-box">
-              <span id="front-seconds" class="countdown-num">00</span>
-            </div>
+          <div class="countdown-unit">
+            <span id="front-seconds" class="countdown-num">00</span>
             <span class="countdown-label">Seconds</span>
           </div>
         </div>
@@ -136,7 +130,7 @@
         <!-- Timer lock status info -->
         <div class="front-lock-status">
           <span class="lock-indicator-icon">🔒</span>
-          <span id="lock-status-text">Locked • Automatically unlocks & welcomes Princess Sowmiya on Nov 5 at 12:00 AM Midnight</span>
+          <span id="lock-status-text">Locked • Automatically unlocks on Nov 5 at 12:00 AM Midnight</span>
         </div>
       </div>
 
@@ -146,57 +140,7 @@
     </div>
   </section>
 
-  <!-- ==============================================
-       GRAND WELCOMING OVERLAY (THEMED ROYAL IVORY & GOLD)
-       ============================================== -->
-  <div id="grand-welcoming-overlay" class="grand-welcoming-overlay hidden" aria-live="assertive" role="dialog" aria-modal="true">
-    <div class="welcoming-backdrop"></div>
-    <div class="welcoming-content text-center">
-      <!-- Luxury Gold Corner Accents matching theme -->
-      <div class="welcoming-corner top-left"></div>
-      <div class="welcoming-corner top-right"></div>
-      <div class="welcoming-corner bottom-left"></div>
-      <div class="welcoming-corner bottom-right"></div>
-
-      <div class="welcoming-crown-wrapper">
-        <div class="welcoming-crown">👑</div>
-        <div class="welcoming-sparkle-ring"></div>
-      </div>
-      
-      <div class="luxury-badge welcoming-badge">
-        <span class="badge-star">✦</span>
-        <span class="badge-text">THE CLOCK HAS STRUCK 00:00:00</span>
-        <span class="badge-star">✦</span>
-      </div>
-
-      <h1 class="welcoming-title royal-gold-shimmer">
-        HAPPY BIRTHDAY MY LOVE
-      </h1>
-      
-      <p class="welcoming-subtitle">
-        "To my Princess, my Forever, and the Love of my Life ❤️"
-      </p>
-
-      <div class="welcoming-tags-row">
-        <span class="welcoming-tag">🎆 Crackers Firing</span>
-        <span class="welcoming-tag">🌹 Flowers Falling</span>
-        <span class="welcoming-tag">🎵 Romantic Symphony</span>
-      </div>
-
-      <div class="welcoming-action-box">
-        <button id="grand-enter-btn" class="gold-cta-btn grand-enter-btn pulse-glow" aria-label="Step into your little world">
-          <span class="btn-shine"></span>
-          <span class="btn-text">STEP INSIDE YOUR LITTLE WORLD ✨</span>
-        </button>
-      </div>
-
-      <div class="auto-enter-note">
-        <span>Taking you inside automatically in <strong id="auto-enter-counter">5</strong>s...</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience Container (Revealed after entering) -->
+  <!-- Experience Container (Revealed after countdown reaches 00:00:00) -->
   <main id="journey-content" class="journey-wrapper">
 
     <!-- ==============================================
