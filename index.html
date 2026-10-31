@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little World Made Just For Sowmiya ❤️</title>
+  <meta name="description" content="A magical, luxury romantic birthday surprise created exclusively for my Princess, Sowmiya.">
+  
+  <!-- Favicon / Heart emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Poppins, Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="no-scroll">
+
+  <!-- Fixed Ambient Particle Canvas -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Global Sparkle & Confetti Canvas -->
+  <canvas id="effects-canvas" aria-hidden="true"></canvas>
+
+  <!-- Golden Page Progress Bar -->
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Floating Audio Player Widget -->
+  <aside id="audio-widget" class="audio-widget" aria-label="Music player">
+    <button id="music-toggle-btn" class="music-pill-btn" aria-label="Toggle background music">
+      <div class="music-vinyl-disc" aria-hidden="true">
+        <div class="vinyl-groove"></div>
+        <div class="vinyl-center"></div>
+      </div>
+      <div class="music-spectrum" aria-hidden="true">
+        <span class="spectrum-bar bar-1"></span>
+        <span class="spectrum-bar bar-2"></span>
+        <span class="spectrum-bar bar-3"></span>
+        <span class="spectrum-bar bar-4"></span>
+      </div>
+      <div class="music-info">
+        <span id="music-label" class="music-title">Play Music ✨</span>
+        <span id="music-status" class="music-status">Romantic Melody</span>
+      </div>
+    </button>
+    <audio id="bg-music" src="assets/music/romantic-melody.wav" preload="auto" loop></audio>
+  </aside>
+
+  <!-- Right Floating Quick Navigation Dots (Desktop) -->
+  <nav id="journey-nav" class="journey-nav hidden" aria-label="Journey navigation">
+    <a href="#entrance" class="nav-dot active" data-title="The Entrance" aria-label="The Entrance"></a>
+    <a href="#celebration" class="nav-dot" data-title="Birthday Celebration" aria-label="Birthday Celebration"></a>
+    <a href="#message" class="nav-dot" data-title="From My Heart" aria-label="From My Heart"></a>
+    <a href="#gallery" class="nav-dot" data-title="Our Little World" aria-label="Our Little World"></a>
+    <a href="#reasons" class="nav-dot" data-title="10 Reasons" aria-label="10 Reasons"></a>
+    <a href="#letter" class="nav-dot" data-title="Love Letter" aria-label="Love Letter"></a>
+    <a href="#gift" class="nav-dot" data-title="Mystery Gift" aria-label="Mystery Gift"></a>
+    <a href="#finale" class="nav-dot" data-title="Grand Finale" aria-label="Grand Finale"></a>
+    <a href="#proposal" class="nav-dot" data-title="Will You Marry Me?" aria-label="Will You Marry Me?"></a>
+  </nav>
+
+  <!-- ==============================================
+       SECTION 1: THE MAGICAL ENTRANCE
+       ============================================== -->
+  <section id="entrance" class="section entrance-section active-entrance">
+    <div class="entrance-ornament-frame">
+      <div class="frame-corner top-left"></div>
+      <div class="frame-corner top-right"></div>
+      <div class="frame-corner bottom-left"></div>
+      <div class="frame-corner bottom-right"></div>
+    </div>
+
+    <div class="entrance-content text-center">
+      <div class="luxury-badge entrance-badge">
+        <span class="badge-star">✦</span>
+        <span class="badge-text">A SPECIAL LITTLE SURPRISE</span>
+        <span class="badge-star">✦</span>
+      </div>
+
+      <h1 class="entrance-title">
+        Sowmiya, this little world has been waiting for you...
+      </h1>
+
+      <p class="entrance-subtitle">
+        Made with love, exclusively for my Princess.
+      </p>
+
+      <div class="entrance-action">
+        <button id="enter-btn" class="gold-cta-btn pulse-glow" aria-label="Enter your little world">
+          <span class="btn-shine"></span>
+          <span class="btn-text">ENTER YOUR LITTLE WORLD ✨</span>
+        </button>
+      </div>
+
+      <div class="entrance-hint">
+        <span>Turn on sound for the best experience 🎵</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Container (Revealed after entering) -->
+  <main id="journey-content" class="journey-wrapper">
+
+    <!-- ==============================================
+         SECTION 2: THE GRAND BIRTHDAY CELEBRATION
+         ============================================== -->
+    <section id="celebration" class="section celebration-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="gold-crown-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14v2H5z" fill="#D4AF37" stroke="#5C4632"/>
+            </svg>
+          </div>
+          <p class="section-pretitle">CELEBRATING YOU TODAY & ALWAYS</p>
+          <h2 class="section-title gold-gradient-text">Happy Birthday, Sowmiya! ❤️</h2>
+          <p class="celebration-date-tag">
+            <span class="calendar-icon">✦</span>
+            <span>November 5 — The day my favorite person came into this world.</span>
+            <span class="calendar-icon">✦</span>
+          </p>
+        </div>
+
+        <!-- Birthday Status / Countdown Card -->
+        <div class="celebration-status-card reveal-on-scroll">
+          <div id="countdown-wrapper" class="countdown-grid">
+            <div class="countdown-unit">
+              <span id="days" class="countdown-num">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+              <span id="hours" class="countdown-num">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+              <span id="minutes" class="countdown-num">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+              <span id="seconds" class="countdown-num">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          <div id="birthday-greeting-badge" class="birthday-greeting-badge hidden">
+            <span class="badge-crown">👑</span>
+            <p>It's your special birthday, Princess! Today the universe celebrates you!</p>
+          </div>
+        </div>
+
+        <!-- Animated Luxury Birthday Cake -->
+        <div class="cake-display-stage reveal-on-scroll">
+          <!-- Floating decorative balloons -->
+          <div class="floating-balloon balloon-left" aria-hidden="true">
+            <div class="balloon-body"></div>
+            <div class="balloon-string"></div>
+          </div>
+          <div class="floating-balloon balloon-right" aria-hidden="true">
+            <div class="balloon-body"></div>
+            <div class="balloon-string"></div>
+          </div>
+
+          <div class="cake-pedestal">
+            <div class="cake-container">
+              <!-- Candles on top -->
+              <div class="candles-row">
+                <div class="cake-candle candle-1">
+                  <div class="flame flame-1"></div>
+                  <div class="candle-stick"></div>
+                </div>
+                <div class="cake-candle candle-2">
+                  <div class="flame flame-2"></div>
+                  <div class="candle-stick"></div>
+                </div>
+                <div class="cake-candle candle-3">
+                  <div class="flame flame-3"></div>
+                  <div class="candle-stick"></div>
+                </div>
+              </div>
+
+              <!-- Top tier -->
+              <div class="cake-tier tier-top">
+                <div class="tier-frosting"></div>
+                <div class="tier-pearls"></div>
+                <div class="tier-body"></div>
+              </div>
+
+              <!-- Middle tier -->
+              <div class="cake-tier tier-middle">
+                <div class="tier-frosting"></div>
+                <div class="gold-filigree-trim"></div>
+                <div class="tier-body"></div>
+              </div>
+
+              <!-- Bottom tier -->
+              <div class="cake-tier tier-bottom">
+                <div class="tier-frosting"></div>
+                <div class="gold-rosette-row">
+                  <span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span>
+                </div>
+                <div class="tier-body"></div>
+              </div>
+
+              <!-- Cake Plate -->
+              <div class="cake-plate"></div>
+            </div>
+          </div>
+
+          <!-- Wish Interaction -->
+          <div class="cake-actions text-center">
+            <button id="make-wish-btn" class="gold-cta-btn wish-btn" aria-label="Make a wish, Princess">
+              <span class="btn-shine"></span>
+              <span class="btn-text">MAKE A WISH, PRINCESS ✨</span>
+            </button>
+            <div id="wish-outcome" class="wish-message-box hidden" role="status">
+              <div class="gold-divider-mini"><span>❧</span></div>
+              <p class="wish-text">"May every beautiful dream of yours come true."</p>
+              <span class="wish-sub">Close your eyes and make it count, my Princess. ❤️</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 3: A MESSAGE FROM MY HEART
+         ============================================== -->
+    <section id="message" class="section heart-message-section">
+      <div class="container container-narrow">
+        <div class="section-header text-center reveal-on-scroll">
+          <p class="section-pretitle">WORDS WRITTEN FOR YOU</p>
+          <h2 class="section-title gold-gradient-text">Something I Want You To Know...</h2>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">❦</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <div class="editorial-letter-card reveal-on-scroll">
+          <div class="editorial-inner-border">
+            <div class="letter-stamp-top">
+              <span class="stamp-crown">👑</span>
+              <span class="stamp-date">NOV 05</span>
+            </div>
+
+            <!-- Typing Content Area -->
+            <div id="typing-message-box" class="typed-message-content">
+              <p class="salutation">Sowmiya,</p>
+              <div class="message-body-text" id="heart-message-text">
+                <p>When you entered my life, you made it more colorful than ever.</p>
+                <p>Before you, my days were ordinary, but somehow you brought happiness into every little moment.</p>
+                <p>Your smile makes my day brighter. Your presence makes everything feel more beautiful.</p>
+                <p>I may not always have the perfect words to explain how much you mean to me, but I hope you always know how special you are.</p>
+                <p>You deserve all the happiness, love, success, and beautiful moments in this world.</p>
+                <p class="message-highlight">Happy Birthday, my Princess.</p>
+              </div>
+              <p class="letter-closing">With all my love. ❤️</p>
+            </div>
+
+            <!-- Delicate Golden Heart Icon/Illustration below -->
+            <div class="letter-heart-seal" aria-hidden="true">
+              <div class="beating-gold-heart">
+                <svg viewBox="0 0 24 24" width="38" height="38" fill="#D4AF37" stroke="#5C4632" stroke-width="0.5">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <span class="seal-caption">Forever & Always</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 4: OUR LITTLE WORLD — ROMANTIC ILLUSTRATION GALLERY
+         ============================================== -->
+    <section id="gallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <p class="section-pretitle">CHAPTERS OF OUR STORY</p>
+          <h2 class="section-title gold-gradient-text">Our Little World</h2>
+          <p class="section-description">
+            Moments of magic, warmth, and gentle dreams painted in white and gold.
+          </p>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">✦</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <!-- 4 Romantic Illustrations Gallery Grid -->
+        <div class="gallery-grid">
+          <!-- Item 1: Golden roses -->
+          <div class="gallery-card reveal-on-scroll" data-index="0" data-caption="Every little moment is special." data-title="Golden Roses">
+            <div class="gallery-image-frame">
+              <img src="assets/illustrations/golden-roses.jpg" alt="Golden blooming roses" loading="lazy" class="gallery-img">
+              <div class="gallery-overlay">
+                <span class="zoom-icon">🔍</span>
+                <span class="overlay-hint">Tap to view</span>
+              </div>
+            </div>
+            <div class="gallery-card-content">
+              <h3 class="gallery-card-title">Golden Roses</h3>
+              <p class="gallery-card-caption">"Every little moment is special."</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Moon and stars -->
+          <div class="gallery-card reveal-on-scroll" data-index="1" data-caption="Some people feel like sunshine." data-title="Moon & Golden Stars">
+            <div class="gallery-image-frame">
+              <img src="assets/illustrations/moon-and-stars.jpg" alt="Luminous golden crescent moon surrounded by stars" loading="lazy" class="gallery-img">
+              <div class="gallery-overlay">
+                <span class="zoom-icon">🔍</span>
+                <span class="overlay-hint">Tap to view</span>
+              </div>
+            </div>
+            <div class="gallery-card-content">
+              <h3 class="gallery-card-title">Moon & Golden Stars</h3>
+              <p class="gallery-card-caption">"Some people feel like sunshine."</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Heart-shaped flower arrangement -->
+          <div class="gallery-card reveal-on-scroll" data-index="2" data-caption="You're my favorite kind of magic." data-title="Heart of Blossoms">
+            <div class="gallery-image-frame">
+              <img src="assets/illustrations/heart-flower-wreath.jpg" alt="Heart shaped luxury white and gold flower wreath" loading="lazy" class="gallery-img">
+              <div class="gallery-overlay">
+                <span class="zoom-icon">🔍</span>
+                <span class="overlay-hint">Tap to view</span>
+              </div>
+            </div>
+            <div class="gallery-card-content">
+              <h3 class="gallery-card-title">Heart of Blossoms</h3>
+              <p class="gallery-card-caption">"You're my favorite kind of magic."</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Two hands holding each other -->
+          <div class="gallery-card reveal-on-scroll" data-index="3" data-caption="In your tender hold, I found my safest home." data-title="Hands Held Gently">
+            <div class="gallery-image-frame">
+              <img src="assets/illustrations/hands-holding.jpg" alt="Two hands holding each other tenderly with golden sparkles" loading="lazy" class="gallery-img">
+              <div class="gallery-overlay">
+                <span class="zoom-icon">🔍</span>
+                <span class="overlay-hint">Tap to view</span>
+              </div>
+            </div>
+            <div class="gallery-card-content">
+              <h3 class="gallery-card-title">Hands Held Gently</h3>
+              <p class="gallery-card-caption">"In your tender hold, I found my safest home."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="gallery-lightbox" class="lightbox-modal hidden" role="dialog" aria-modal="true" aria-label="Illustration Lightbox">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-container">
+        <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close lightbox">✕</button>
+        <div class="lightbox-frame">
+          <img id="lightbox-img" src="" alt="Enlarged illustration view" class="lightbox-image">
+          <div class="lightbox-details">
+            <h4 id="lightbox-title" class="lightbox-title"></h4>
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         SECTION 5: 10 REASONS WHY YOU ARE MY PRINCESS
+         ============================================== -->
+    <section id="reasons" class="section reasons-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <p class="section-pretitle">COUNTING MY BLESSINGS</p>
+          <h2 class="section-title gold-gradient-text">10 Little Reasons Why You're So Special To Me</h2>
+          <p class="section-description">
+            Click on each card to unlock the sweet little secret behind each reason.
+          </p>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">❦</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <div class="reasons-grid">
+          <!-- Reason 1 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">01</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Your beautiful smile</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  The way your face lights up can turn my darkest days into sunshine. It's the most comforting sight in the entire world.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 2 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">02</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Your adorable way of talking</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  Every expression, the cadence of your voice, and the sweet way you explain things make me listen with a fond smile every time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 3 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">03</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Your caring heart</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  You care so genuinely and deeply about the people in your life. Your pure empathy and thoughtfulness inspire me every single day.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 4 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">04</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">The happiness you bring into my life</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  You turned ordinary routines into extraordinary adventures. Just knowing you exist in my corner makes life so rich and meaningful.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 5 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">05</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Your cute little habits</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  The little gestures only you do, the silly giggles, the way you react when surprised—they are all uniquely precious to me.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 6 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">06</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">The way you make ordinary moments special</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  A simple text, a quiet evening, or a short walk feels like a romantic movie scene whenever I am sharing it with you.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 7 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">07</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Your beautiful personality</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  Graceful, witty, kind, and strong. You carry yourself with such gentle elegance that everyone around you feels charmed.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 8 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">08</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">The comfort I feel when talking to you</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  With you, I can be 100% myself. No masks, no pretense. You are my peaceful harbor in this chaotic world.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 9 -->
+          <div class="reason-card reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front">
+                <div class="reason-header">
+                  <span class="reason-num">09</span>
+                  <span class="reason-heart">♥</span>
+                </div>
+                <h3 class="reason-title">The way you make me smile without trying</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  Just seeing your name pop up on my phone is enough to make my heart skip a beat and bring an instant smile to my face.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reason 10 -->
+          <div class="reason-card reason-card-10 reveal-on-scroll" tabindex="0" role="button" aria-expanded="false">
+            <div class="reason-card-inner">
+              <div class="card-face card-front highlight-card-front">
+                <div class="reason-header">
+                  <span class="reason-num">10</span>
+                  <span class="reason-heart highlight-heart">♥</span>
+                </div>
+                <h3 class="reason-title">Simply because you're YOU</h3>
+                <span class="card-click-hint">Click to reveal ✨</span>
+              </div>
+              <div class="card-face card-back highlight-card-back">
+                <span class="back-crown">👑</span>
+                <p class="reason-detail">
+                  Not just for any single reason, but for the entire masterpiece that you are. There will never be anyone like you, my Princess.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 6: OPEN MY LOVE LETTER
+         ============================================== -->
+    <section id="letter" class="section letter-section">
+      <div class="container container-narrow">
+        <div class="section-header text-center reveal-on-scroll">
+          <p class="section-pretitle">SEALED WITH LOVE</p>
+          <h2 class="section-title gold-gradient-text">Open My Love Letter</h2>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">💌</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <div class="envelope-stage reveal-on-scroll">
+          <!-- The Interactive Realistic Envelope -->
+          <div id="love-envelope" class="love-envelope">
+            <!-- Envelope Flap (Top triangle) -->
+            <div class="envelope-flap" id="envelope-flap"></div>
+
+            <!-- Envelope Pocket (Bottom & Sides) -->
+            <div class="envelope-front">
+              <div class="envelope-label">
+                <p class="label-to">❤️</p>
+                <p class="label-sub">A little letter, straight from my heart.</p>
+              </div>
+            </div>
+
+            <!-- The Sliding Parchment Letter Inside -->
+            <div id="letter-paper" class="letter-paper">
+              <div class="letter-filigree-border">
+                <div class="letter-header-ornament">
+                  <span class="filigree-left">❦</span>
+                  <span class="letter-date">November 5</span>
+                  <span class="filigree-right">❦</span>
+                </div>
+
+                <div class="letter-typewriter-container">
+                  <h3 class="letter-heading">Dearest Sowmiya,</h3>
+                  <div id="love-letter-text" class="letter-body">
+                    <!-- Typed dynamically or revealed smoothly -->
+                    <p>On this day, the world became infinitely softer and brighter because you were born.</p>
+                    <p>Every time I look at you, I see grace, kindness, and a magic that words can rarely capture. You have brought so much light into my life that even on the cloudy days, I feel blessed beyond measure.</p>
+                    <p>May this year give back to you all the tenderness, warmth, and pure joy that you effortlessly give to the world. Remember that you are cherished, celebrated, and deeply loved, today and for all the days ahead.</p>
+                  </div>
+                  <div class="letter-signature-block">
+                    <p class="handwritten-closing">Forever by your side,</p>
+                    <p class="handwritten-sign">Your Person ❤️</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Golden Wax Seal (Prominent 'S' Initial) -->
+            <div id="wax-seal" class="wax-seal" role="button" aria-label="Break wax seal to open letter" tabindex="0">
+              <div class="seal-inner">
+                <span class="seal-letter">S</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Letter Controls -->
+          <div class="letter-action-bar text-center">
+            <button id="open-letter-btn" class="gold-cta-btn letter-btn" aria-label="Open my letter">
+              <span class="btn-shine"></span>
+              <span class="btn-text">OPEN MY LETTER 💌</span>
+            </button>
+            <button id="reopen-letter-btn" class="gold-outline-btn letter-btn hidden" aria-label="Read it again">
+              <span class="btn-text">READ IT AGAIN ❤️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 7: THE FINAL MYSTERY GIFT
+         ============================================== -->
+    <section id="gift" class="section gift-section">
+      <div class="container container-narrow">
+        <div class="section-header text-center reveal-on-scroll">
+          <p class="section-pretitle">ONE LAST SURPRISE</p>
+          <h2 class="section-title gold-gradient-text">Princess, there's one last surprise waiting for you...</h2>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">🎁</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <div class="gift-showcase-stage reveal-on-scroll">
+          <!-- 3D Luxury Gift Box -->
+          <div class="gift-box-wrapper" id="gift-box-wrapper">
+            <div class="gift-ambient-glow"></div>
+            
+            <div id="gift-box" class="gift-box">
+              <!-- Gift Lid with Ornate Bow -->
+              <div class="gift-lid" id="gift-lid">
+                <div class="lid-ribbon-h"></div>
+                <div class="lid-ribbon-v"></div>
+                <div class="gift-bow">
+                  <div class="bow-loop bow-left"></div>
+                  <div class="bow-loop bow-right"></div>
+                  <div class="bow-center"></div>
+                </div>
+              </div>
+
+              <!-- Gift Base -->
+              <div class="gift-base">
+                <div class="box-ribbon-h"></div>
+                <div class="box-ribbon-v"></div>
+                <div class="box-inner-light" id="box-light"></div>
+              </div>
+            </div>
+
+            <!-- Revealed Emotional Message inside/above gift -->
+            <div id="gift-reveal-content" class="gift-reveal-card hidden">
+              <div class="reveal-inner">
+                <div class="reveal-sparkle">✦ ✦ ✦</div>
+                <blockquote class="reveal-quote">
+                  "If I could give you one thing in this world, it would be the ability to see yourself through my eyes. Then you would know how special and beautiful you are to me."
+                </blockquote>
+                <div class="gold-divider-mini"><span>❧</span></div>
+                <h3 class="reveal-birthday-salute gold-gradient-text">
+                  Happy Birthday, My Princess Sowmiya! ❤️
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gift Action Button -->
+          <div class="gift-action-bar text-center">
+            <button id="open-gift-btn" class="gold-cta-btn gift-btn" aria-label="Open your gift">
+              <span class="btn-shine"></span>
+              <span class="btn-text">OPEN YOUR GIFT 🎁</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 8: THE GRAND ROMANTIC FINALE
+         ============================================== -->
+    <section id="finale" class="section finale-section">
+      <div class="finale-ornament-frame">
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner top-right"></div>
+        <div class="frame-corner bottom-left"></div>
+        <div class="frame-corner bottom-right"></div>
+      </div>
+
+      <div class="container container-narrow text-center">
+        <!-- Glowing animated heart centerpiece -->
+        <div class="finale-heart-center reveal-on-scroll">
+          <div class="pulsing-halo"></div>
+          <div class="center-heart-svg">
+            <svg viewBox="0 0 100 100" width="110" height="110" fill="url(#goldGradient)" filter="drop-shadow(0 0 25px rgba(212,175,55,0.7))">
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFDF8"/>
+                  <stop offset="40%" stop-color="#E8D6A5"/>
+                  <stop offset="70%" stop-color="#D4AF37"/>
+                  <stop offset="100%" stop-color="#AA820A"/>
+                </linearGradient>
+              </defs>
+              <path d="M50 88 C20 62, 5 44, 5 28 C5 14, 16 5, 30 5 C38 5, 46 10, 50 18 C54 10, 62 5, 70 5 C84 5, 95 14, 95 28 C95 44, 80 62, 50 88 Z"/>
+            </svg>
+          </div>
+          <!-- Golden butterflies floating around heart -->
+          <div class="orbiting-butterfly butterfly-1">🦋</div>
+          <div class="orbiting-butterfly butterfly-2">🦋</div>
+        </div>
+
+        <div class="finale-quote-block reveal-on-scroll">
+          <blockquote class="finale-quote">
+            "When you entered my life, you made my world more colorful than ever. And if I had to choose again, I'd still choose you."
+          </blockquote>
+        </div>
+
+        <div class="finale-celebration-title reveal-on-scroll">
+          <h2 class="finale-main-title gold-gradient-text">Happy Birthday, Sowmiya ❤️</h2>
+          <p class="finale-signature">With all my love, Your Person.</p>
+        </div>
+
+        <!-- Finale Interactive Hug Button -->
+        <div class="finale-hug-action reveal-on-scroll">
+          <button id="hug-btn" class="gold-cta-btn hug-btn pulse-glow" aria-label="One more hug">
+            <span class="btn-shine"></span>
+            <span class="btn-text">ONE MORE HUG? 🤗</span>
+          </button>
+        </div>
+
+        <!-- Subtle footer note -->
+        <footer class="luxury-footer reveal-on-scroll">
+          <p class="footer-note">Handcrafted with boundless love for Sowmiya • November 5</p>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 9: THE GRAND PROPOSAL — WILL YOU MARRY ME? 💍
+         ============================================== -->
+    <section id="proposal" class="section proposal-section">
+      <!-- Luxury Animated Floral & Butterfly Arch Background -->
+      <div class="proposal-ornament-frame">
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner top-right"></div>
+        <div class="frame-corner bottom-left"></div>
+        <div class="frame-corner bottom-right"></div>
+      </div>
+
+      <!-- Floating butterflies on the page -->
+      <div class="floating-butterflies-layer" aria-hidden="true">
+        <span class="fly-butterfly b1">🦋</span>
+        <span class="fly-butterfly b2">🦋</span>
+        <span class="fly-butterfly b3">🦋</span>
+        <span class="fly-butterfly b4">🦋</span>
+        <span class="fly-butterfly b5">🦋</span>
+        <span class="fly-butterfly b6">🦋</span>
+      </div>
+
+      <div class="container container-narrow text-center">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="proposal-ring-icon" aria-hidden="true">
+            <span class="ring-sparkle-glow">💍</span>
+          </div>
+          <p class="section-pretitle">A FOREVER QUESTION FOR MY PRINCESS</p>
+          <h2 class="section-title proposal-main-heading gold-gradient-text">
+            Will You Marry Me, Sowmiya? 💍
+          </h2>
+          <blockquote class="proposal-quote">
+            "In every lifetime, across every universe, my soul will always choose you. Will you make me the happiest person in the world and walk beside me forever?"
+          </blockquote>
+          <div class="gold-ornament-line">
+            <span class="line-left"></span>
+            <span class="line-heart">❦</span>
+            <span class="line-right"></span>
+          </div>
+        </div>
+
+        <!-- Proposal Showcase Card -->
+        <div class="proposal-showcase-card reveal-on-scroll">
+          <div class="proposal-image-frame">
+            <img src="assets/illustrations/proposal-royal-arch.jpg" alt="Romantic proposal under glowing golden floral arch with butterflies" class="proposal-img">
+            <div class="proposal-image-aura"></div>
+          </div>
+
+          <!-- Proposal Choice Arena (YES vs runaway NO) -->
+          <div id="proposal-choice-arena" class="proposal-choice-arena">
+            <p class="arena-prompt">Princess, my heart is in your hands...</p>
+            <div class="choice-buttons-cluster">
+              <button id="proposal-yes-btn" class="gold-cta-btn proposal-yes-btn pulse-glow">
+                <span class="btn-shine"></span>
+                <span class="btn-text">YES! A THOUSAND TIMES YES! 💍❤️</span>
+              </button>
+              <button id="proposal-no-btn" class="no-dodge-btn">
+                <span class="btn-text">No 🙈</span>
+              </button>
+            </div>
+            <p id="no-dodge-hint" class="no-dodge-hint hidden">There is only one true answer for my Princess! ✨</p>
+          </div>
+
+          <!-- Grand Marriage Celebration Banner (Revealed after clicking YES) -->
+          <div id="marriage-celebration-card" class="marriage-celebration-card hidden">
+            <div class="celebration-rings-frame">
+              <img src="assets/illustrations/wedding-rings.jpg" alt="Two intertwined diamond wedding rings with butterflies and roses" class="celebration-rings-img">
+            </div>
+            <div class="celebration-content">
+              <div class="celebration-crown">👑 💍 👑</div>
+              <h3 class="celebration-title gold-gradient-text">
+                YOU ARE OFFICIALLY MARRIED! 💍❤️
+              </h3>
+              <p class="celebration-subtitle">
+                Forever & Always • Sowmiya & Rithick
+              </p>
+              <div class="gold-divider-mini"><span>❧</span></div>
+              <p class="celebration-vows">
+                "From this day forward, until the end of time, you are my home, my dream come true, and my forever love. Happy Birthday to my gorgeous Princess!"
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="luxury-footer proposal-footer reveal-on-scroll">
+          <p class="footer-note">A Little World Made With Boundless Love For Sowmiya ❤️</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       VIRTUAL HUG MODAL
+       ============================================== -->
+  <div id="hug-modal" class="hug-modal hidden" role="dialog" aria-modal="true" aria-label="Virtual Hug Surprise">
+    <div class="hug-modal-backdrop"></div>
+    <div class="hug-modal-card">
+      <button id="hug-modal-close" class="lightbox-close-btn" aria-label="Close modal">✕</button>
+      <div class="hug-illustration-box">
+        <img src="assets/illustrations/romantic-heart-hug.jpg" alt="Two cute chibi sweethearts hugging tenderly" class="hug-img">
+      </div>
+      <div class="hug-modal-text text-center">
+        <div class="hug-crown">👑</div>
+        <h3 class="hug-title gold-gradient-text">Sending you the biggest virtual hug, Princess! ❤️</h3>
+        <p class="hug-sub">Whenever you miss me or need a smile, remember this warm little hug is always waiting for you.</p>
+        <button id="hug-again-btn" class="gold-cta-btn hug-replay-btn">
+          <span>HUG TIGHTER ❤️</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
